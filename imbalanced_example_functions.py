@@ -55,8 +55,8 @@ def underSamplingBinary(X, y, targetBalance = 0.5):
     X['target'] = y
     majority = X[X['target'] == yMajority].values.tolist()
     minority = X[X['target'] == yMinority].values.tolist()
-    # reate enlarged minority dataset until targetBalance
-    # between the two datasets is achieved
+    # While the length of the majority is larger than the targeted balance
+    # we randomly remove one instance from the majority dataset
     while len(majority)/(len(minority) + len(majority)) > targetBalance:
         majority.pop(random.randrange(len(majority)))
     # Take the original column names
